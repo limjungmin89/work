@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>TEST 그리드</h1>
+    <h1>TEST 그리드 안나오냐 왜</h1>
     <GridTemp :data="gridData" :columns="gridColumns" :filter-key="searchQuery"></GridTemp>
 </div>    
 </template>
