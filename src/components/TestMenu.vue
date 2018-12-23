@@ -1,18 +1,26 @@
 <template>
 <div>
-    <h1>TEST 그리드 안나오냐 왜</h1>
+    <form id="search">
+        Search <input name="query" v-model="searchQuery">
+    </form>
     <GridTemp :data="gridData" :columns="gridColumns" :filter-key="searchQuery"></GridTemp>
+    <TreeTemp :model="treeData"></TreeTemp>
+    <ul>
+        <TreeTemp2 :model="treeData"></TreeTemp2>
+    </ul>
 </div>    
 </template>
 
 <script>
 import GridTemp from '@/components/GridTemp'
+import TreeTemp from '@/components/TreeTemp'
+import TreeTemp2 from '@/components/TreeTemp2'
 
 export default {
     data() {
         return {
             searchQuery: '',
-            gridColumns: ['listNum', 'cdTitle','fileName','insertUserId','cdOrgName','updateDate'],
+            gridColumns: ['listNum', 'cdTitle', 'fileName', 'insertUserId', 'cdOrgName','updateDate'],
             gridData: [
                 {
                 listNum: 1,
@@ -54,11 +62,36 @@ export default {
                 cdOrgName: "시스템관리자",
                 updateDate: "2018.12.06 14:08:00" 
               }
-            ]
+            ],
+            treeData: {
+                name: 'Todos-client',
+                children: [
+                    { name: 'assets', 
+                      children:[
+                          {name: 'logo.png' }
+                      ]
+                    },
+                    { name: 'components', 
+                      children: [
+                        { name: 'GridTemp.vue' },
+                        { name: 'HelloVorld.vue' },
+                        { name: 'TestMenu.vue' },
+                        { name: 'TreeTemp.vue' }
+                      ]
+                    },
+                    { name: 'router',
+                      children: [
+                        { name: 'index.js' }
+                      ]
+                    }
+                ]
+            }
         }
     },
     components: {
-        GridTemp
+        GridTemp,
+        TreeTemp,
+        TreeTemp2
     }
 }
 </script>
