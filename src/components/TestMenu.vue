@@ -12,16 +12,54 @@ export default {
     data() {
         return {
             searchQuery: '',
-            gridColumns: ['name', 'power'],
+            gridColumns: ['listNum', 'cdTitle','fileName','insertUserId','cdOrgName','updateDate'],
             gridData: [
-                { name: 'Chuck Norris', power: Infinity },
-                { name: 'Bruce Lee', power: 9000 },
-                { name: 'Jackie Chan', power: 7000 },
-                { name: 'Jet Li', power: 8000 }
+                {
+                listNum: 1,
+                cdTitle: "테스트 공지1",
+                fileName: "log4j.xml",
+                insertUserId: "admin",
+                cdOrgName: "시스템관리자",
+                updateDate: "2018.01.01 01:01:01" 
+              },
+              {
+                listNum: 2,
+                cdTitle: "테스트 공지2",
+                fileName: "log4j.xml",
+                insertUserId: "admin",
+                cdOrgName: "시스템관리자",
+                updateDate: "2018.02.02 02:02:02" 
+              },
+              {
+                listNum: 3,
+                cdTitle: "테스트 공지3",
+                fileName: "log4j.xml",
+                insertUserId: "admin",
+                cdOrgName: "시스템관리자",
+                updateDate: "2018.03.03 03:03:03" 
+              },
+              {
+                listNum: 4,
+                cdTitle: "테스트 공지4",
+                fileName: "log4j.xml",
+                insertUserId: "admin",
+                cdOrgName: "시스템관리자",
+                updateDate: "2018.12.06 14:08:00" 
+              },
+              {
+                listNum: 5,
+                cdTitle: "테스트 공지5",
+                fileName: "log4j.xml",
+                insertUserId: "admin",
+                cdOrgName: "시스템관리자",
+                updateDate: "2018.12.06 14:08:00" 
+              }
             ]
         }
     },
-    components: GridTemp
+    components: {
+        GridTemp
+    }
 }
 </script>
 
