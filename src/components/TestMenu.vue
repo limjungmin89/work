@@ -8,6 +8,9 @@
     <ul>
         <TreeTemp2 :model="treeData"></TreeTemp2>
     </ul>
+    
+      <polygraph width="200" height="200"></polygraph>
+    
 </div>    
 </template>
 
@@ -15,6 +18,7 @@
 import GridTemp from '@/components/GridTemp'
 import TreeTemp from '@/components/TreeTemp'
 import TreeTemp2 from '@/components/TreeTemp2'
+import polygraph from '@/components/polygraph'
 
 export default {
     data() {
@@ -24,43 +28,43 @@ export default {
             gridData: [
                 {
                 listNum: 1,
-                cdTitle: "테스트 공지1",
-                fileName: "log4j.xml",
-                insertUserId: "admin",
-                cdOrgName: "시스템관리자",
-                updateDate: "2018.01.01 01:01:01" 
+                cdTitle: '테스트 공지1',
+                fileName: 'log4j.xml',
+                insertUserId: 'admin',
+                cdOrgName: '시스템관리자',
+                updateDate: '2018.01.01 01:01:01'
               },
               {
                 listNum: 2,
-                cdTitle: "테스트 공지2",
-                fileName: "log4j.xml",
-                insertUserId: "admin",
-                cdOrgName: "시스템관리자",
-                updateDate: "2018.02.02 02:02:02" 
+                cdTitle: '테스트 공지2',
+                fileName: 'log4j.xml',
+                insertUserId: 'admin',
+                cdOrgName: '시스템관리자',
+                updateDate: '2018.02.02 02:02:02'
               },
               {
                 listNum: 3,
-                cdTitle: "테스트 공지3",
-                fileName: "log4j.xml",
-                insertUserId: "admin",
-                cdOrgName: "시스템관리자",
-                updateDate: "2018.03.03 03:03:03" 
+                cdTitle: '테스트 공지3',
+                fileName: 'log4j.xml',
+                insertUserId: 'admin',
+                cdOrgName: '시스템관리자',
+                updateDate: '2018.03.03 03:03:03'
               },
               {
                 listNum: 4,
-                cdTitle: "테스트 공지4",
-                fileName: "log4j.xml",
-                insertUserId: "admin",
-                cdOrgName: "시스템관리자",
-                updateDate: "2018.12.06 14:08:00" 
+                cdTitle: '테스트 공지4',
+                fileName: 'log4j.xml',
+                insertUserId: 'admin',
+                cdOrgName: '시스템관리자',
+                updateDate: '2018.12.06 14:08:00'
               },
               {
                 listNum: 5,
-                cdTitle: "테스트 공지5",
-                fileName: "log4j.xml",
-                insertUserId: "admin",
-                cdOrgName: "시스템관리자",
-                updateDate: "2018.12.06 14:08:00" 
+                cdTitle: '테스트 공지5',
+                fileName: 'log4j.xml',
+                insertUserId: 'admin',
+                cdOrgName: '시스템관리자',
+                updateDate: '2018.12.06 14:08:00'
               }
             ],
             treeData: {
@@ -91,7 +95,8 @@ export default {
     components: {
         GridTemp,
         TreeTemp,
-        TreeTemp2
+        TreeTemp2,
+        polygraph
     }
 }
 </script>

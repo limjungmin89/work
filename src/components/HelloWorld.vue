@@ -2,7 +2,7 @@
   <div class="hello">
     <img src="../assets/logo.png">
     <h1>{{ msg }}</h1>
-    <button class="btn btn-primary">{{data}}</button>
+    <button class="btn btn-primary" v-on:click="goTestMenu">{{data}}</button>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -92,6 +92,16 @@ export default {
     return {
        msg: 'Welcome to Your Vue.js App'
       ,data: 'test'
+    }
+  },
+  methods:{
+      goTestMenu: function () {
+      // using JSONPlaceholder
+      this.$http.get('/#/testMenu')
+      .then((result) => {
+        console.log(result)
+        this.posts = result.data
+      })
     }
   }
 }
