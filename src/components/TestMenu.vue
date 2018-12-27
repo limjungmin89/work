@@ -8,9 +8,32 @@
     <ul>
         <TreeTemp2 :model="treeData"></TreeTemp2>
     </ul>
+    <svg width="200" height="200">
+      <polygraph :stats="stats"></polygraph>
+    </svg>
+    <div v-for="stat in stats" :key="stat.label">
+      <label>{{stat.label}}</label>
+      <input type="range" v-model="stat.value" min="0" max="100">
+      <span>{{stat.value}}</span>
+      <button @click="remove(stat)" class="remove">X</button>
+    </div>
+    <form id="add">
+        <input name="newlabel" v-model="newLabel">
+        <button @click="add">Add a Stat</button>
+    </form>
+    <pre id="raw">{{ stats }}</pre>
     
-      <polygraph width="200" height="200"></polygraph>
-    
+    <div class="left">
+      <h1>{{ title }}</h1>
+      <ul>
+        <li v-for="(link, index) in links" :key="index">
+          {{ link }}
+        </li>
+      </ul>
+    </div>
+    <div class="right">
+
+    </div>
 </div>    
 </template>
 
@@ -19,6 +42,7 @@ import GridTemp from '@/components/GridTemp'
 import TreeTemp from '@/components/TreeTemp'
 import TreeTemp2 from '@/components/TreeTemp2'
 import polygraph from '@/components/polygraph'
+import {mapState} from 'vuex'
 
 export default {
     data() {
@@ -89,16 +113,50 @@ export default {
                       ]
                     }
                 ]
-            }
+            },
+            newLabel: '',
+            stats: [
+              { label: 'A', value: 100 },
+              { label: 'B', value: 100 },
+              { label: 'C', value: 100 },
+              { label: 'D', value: 100 },
+              { label: 'E', value: 100 },
+              { label: 'F', value: 100 }
+            ]
         }
+    },
+    methods: {
+      add: function (e) {
+        e.preventDefault()
+        if (!this.newLabel) return
+        this.stats.push({
+          label: this.newLabel,
+          value: 100
+        })
+        this.newLabel = ''
+      },
+      remove: function (stat) {
+        if (this.stats.length > 3) {
+          this.stats.splice(this.stats.indexOf(stat), 1)
+        } else {
+          alert('Can\'t delete more!')
+        }
+      }
     },
     components: {
         GridTemp,
         TreeTemp,
         TreeTemp2,
         polygraph
+    },
+    computed: {
+      ...mapState([
+        'title',
+        'links'
+      ])
     }
 }
+
 </script>
 
 <style>

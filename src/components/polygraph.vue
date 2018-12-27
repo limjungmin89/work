@@ -3,24 +3,13 @@
     <g>
       <polygon :points="points"></polygon>
       <circle cx="100" cy="100" r="80"></circle>
-      <AxisLabel
-          v-for="(stat, index) in stats" v-bind:key="stat.label"
-          :stat="stat"
-          :index="index"
-          :total="stats.length">
-      </AxisLabel>
+      <axis-label
+        v-for="(stat, index) in stats" v-bind:key="stat.label"
+        :stat="stat"
+        :index="index"
+        :total="stats.length">
+      </axis-label>
     </g>
-    <div v-for="stat in stats" :key="stat.label">
-      <label>{{stat.label}}</label>
-      <input type="range" v-model="stat.value" min="0" max="100">
-      <span>{{stat.value}}</span>
-      <button @click="remove(stat)" class="remove">X</button>
-    </div>
-    <form id="add">
-        <input name="newlabel" v-model="newLabel">
-        <button @click="add">Add a Stat</button>
-    </form>
-    <pre id="raw">{{ stats }}</pre>
 </div>
 </template>
 
@@ -28,49 +17,18 @@
 import AxisLabel from '@/components/AxisLabel'
 
 export default {
-  data() {
-    return {
-      newLabel: '',
-      stats: [
-        { label: 'A', value: 100 },
-        { label: 'B', value: 100 },
-        { label: 'C', value: 100 },
-        { label: 'D', value: 100 },
-        { label: 'E', value: 100 },
-        { label: 'F', value: 100 }
-      ]
-    }
-  },
+  props: ['stats'],
   computed: {
-    // a computed property for the polygon's points
     points: function () {
-      var total = this.stats.length
-      return this.stats.map(function (stat, i) {
-        var point = valueToPoint(stat.value, i, total)
-        return point.x + ',' + point.y
-      }).join(' ')
-    }
+        var total = this.stats.length
+        return this.stats.map(function (stat, i) {
+          var point = valueToPoint(stat.value, i, total)
+          return point.x + ',' + point.y
+        }).join(' ')
+      }
   },
   components: {
     AxisLabel
-  },
-  methods: {
-    add: function (e) {
-      e.preventDefault()
-      if (!this.newLabel) return
-      this.stats.push({
-        label: this.newLabel,
-        value: 100
-      })
-      this.newLabel = ''
-    },
-    remove: function (stat) {
-      if (this.stats.length > 3) {
-        this.stats.splice(this.stats.indexOf(stat), 1)
-      } else {
-        alert('Can\'t delete more!')
-      }
-    }
   }
 }
 

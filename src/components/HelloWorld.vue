@@ -1,109 +1,23 @@
 <template>
   <div class="hello">
     <img src="../assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <button class="btn btn-primary" v-on:click="goTestMenu">{{data}}</button>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <h1>{{ title }}</h1>
+    <div class="left">
+      <ul>
+        <li v-for="(link, index) in links" v-bind:key="index">
+          {{link}}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   name: 'HelloWorld',
-  data () {
-    return {
-       msg: 'Welcome to Your Vue.js App'
-      ,data: 'test'
-    }
-  },
-  methods:{
-      goTestMenu: function () {
-      // using JSONPlaceholder
-      this.$http.get('/#/testMenu')
-      .then((result) => {
-        console.log(result)
-        this.posts = result.data
-      })
-    }
-  }
+  computed: mapState({title:'title',links:'links'})
 }
 </script>
 
