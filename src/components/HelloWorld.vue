@@ -26,6 +26,7 @@
 
 <script>
 import Stats from '@/components/Stats.vue'
+//import store from '@/store/store.js'
 import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
@@ -42,14 +43,15 @@ export default {
     ...mapState({title:'title',links:'links'})
   },
   methods: {
-    ...mapMutations({ADD_LINK:'ADD_LINK'}),
+    ...mapMutations({ADD_LINK:'ADD_LINK',REMOVE_LINK:'REMOVE_LINK'}),
     ...mapActions({removeLink:'removeLink'}),
-    addLink: function() {
+    addLink() {
       this.ADD_LINK(this.newLink)
       this.newLink= ''
     },
-    removeLinks: function(link) {
+    removeLinks(link) {
       this.removeLink(link)
+      //this.$store.commit('REMOVE_LINK',link)
     }
   }
 }
